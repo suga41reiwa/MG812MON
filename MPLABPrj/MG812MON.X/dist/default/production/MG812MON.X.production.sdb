@@ -11,7 +11,7 @@ channel_Temp 61
 channel_DAC1 62
 channel_FVR 63
 ]
-"136 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
+"127 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
 [e E6342 . `uc
 channel_ANA2 2
 channel_AVSS 60
@@ -93,9 +93,9 @@ channel_FVR 63
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"110 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
+"101 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
 [v _putstr putstr `(v  1 e 1 0 ]
-"118
+"109
 [v _main main `(v  1 e 1 0 ]
 "67 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
@@ -271,7 +271,7 @@ channel_FVR 63
 "69
 [v _nout nout `i  1 s 2 nout ]
 "61 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
-[v _co2_table co2_table `DC[404]us  1 e 808 0 ]
+[v _co2_table co2_table `DC[345]us  1 e 690 0 ]
 [s S22 . 1 `uc 1 perr 1 0 :1:0 
 `uc 1 ferr 1 0 :1:1 
 `uc 1 oerr 1 0 :1:2 
@@ -286,26 +286,26 @@ channel_FVR 63
 [v _EUSART_OverrunErrorHandler EUSART_OverrunErrorHandler `*.37(v  1 e 2 0 ]
 "60
 [v _EUSART_ErrorHandler EUSART_ErrorHandler `*.37(v  1 e 2 0 ]
-"118 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
+"109 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"135
-[v main@i i `i  1 a 2 72 ]
-"125
-[v main@s s `[20]uc  1 a 20 40 ]
 "126
+[v main@i i `i  1 a 2 72 ]
+"116
+[v main@s s `[20]uc  1 a 20 40 ]
+"117
 [v main@ftotal ftotal `f  1 a 4 74 ]
-"130
+"121
 [v main@fco2v fco2v `f  1 a 4 68 ]
-"127
+"118
 [v main@total total `l  1 a 4 64 ]
-"128
+"119
 [v main@n n `i  1 a 2 78 ]
-"131
+"122
 [v main@co2ppm co2ppm `us  1 a 2 62 ]
-"129
+"120
 [v main@co2val co2val `us  1 a 2 60 ]
-"151
+"142
 } 0
 "9 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\nf_sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -743,11 +743,11 @@ channel_FVR 63
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
-"110 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
+"101 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\main.c
 [v _putstr putstr `(v  1 e 1 0 ]
 {
 [v putstr@p p `*.26uc  1 p 2 1 ]
-"116
+"107
 } 0
 "132 C:\GIT\MG812MON\MPLABPrj\MG812MON.X\mcc_generated_files/eusart.c
 [v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
