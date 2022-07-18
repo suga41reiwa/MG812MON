@@ -6,8 +6,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "71 ./mcc_generated_files/mcc.h
 [; ;./mcc_generated_files/mcc.h: 71: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"127 main.c
-[; ;main.c: 127:             co2val = ADC_GetConversion(0b000010);
+[v F183 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\builtins.h
+[v __delay `JF183 ~T0 @X0 0 e ]
+[p i __delay ]
+"129 main.c
+[; ;main.c: 129:             total += ADC_GetConversion(0b000010);
 [c E6342 2 60 61 62 63 .. ]
 [n E6342 . channel_ANA2 channel_AVSS channel_Temp channel_DAC1 channel_FVR  ]
 "289 ./mcc_generated_files/adc.h
@@ -15,10 +19,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ADC_GetConversion `(us ~T0 @X0 0 ef1`E6342 ]
 "113 C:\Program Files\Microchip\xc8\v2.31\pic\include\c99\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-[v F183 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\builtins.h
-[v __delay `JF183 ~T0 @X0 0 e ]
-[p i __delay ]
+"2243 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h: 2243:     struct {
+[s S117 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S117 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
+"2242
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h: 2242: typedef union {
+[u S116 `S117 1 ]
+[n S116 . . ]
+"2252
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h: 2252: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
+[v _LATCbits `VS116 ~T0 @X0 0 e@270 ]
+"441
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h: 441:     struct {
+[s S35 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S35 . RC0 RC1 RC2 RC3 RC4 RC5 ]
+"440
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h: 440: typedef union {
+[u S34 `S35 1 ]
+[n S34 . . ]
+"450
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h: 450: extern volatile PORTCbits_t PORTCbits __attribute__((address(0x00E)));
+[v _PORTCbits `VS34 ~T0 @X0 0 e@14 ]
 "55 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16F1xxxx_DFP/1.7.146/xc8\pic\include\proc\pic16f18326.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1425,46 +1447,54 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "111
-[; ;main.c: 111:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
+[; ;main.c: 111:     uint16_t btn_cnt=0;
+[v _btn_cnt `us ~T0 @X0 1 a ]
+[e = _btn_cnt -> -> 0 `i `us ]
+"112
+[; ;main.c: 112:     float tbltop_v = 2.940f;
+[v _tbltop_v `f ~T0 @X0 1 a ]
+[e = _tbltop_v -> .2.940 `f ]
 "113
-[; ;main.c: 113:     putstr("MG812MONITOR V1.00\r\n");
-[e ( _putstr (1 :s 1C ]
-"114
-[; ;main.c: 114:     while (1)
-[e :U 934 ]
+[; ;main.c: 113:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
 "115
-[; ;main.c: 115:     {
-{
+[; ;main.c: 115:     _delay((unsigned long)((1000)*(1000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
 "116
-[; ;main.c: 116:         char s[20];
-[v _s `uc ~T0 @X0 -> 20 `i a ]
+[; ;main.c: 116:     putstr("\n\n\r\nMG812MONITOR V1.00\r\n");
+[e ( _putstr (1 :s 1C ]
 "117
-[; ;main.c: 117:         float ftotal;
-[v _ftotal `f ~T0 @X0 1 a ]
+[; ;main.c: 117:     while (1)
+[e :U 934 ]
 "118
-[; ;main.c: 118:         long total;
-[v _total `l ~T0 @X0 1 a ]
+[; ;main.c: 118:     {
+{
 "119
-[; ;main.c: 119:         int n;
-[v _n `i ~T0 @X0 1 a ]
+[; ;main.c: 119:         char s[20];
+[v _s `uc ~T0 @X0 -> 20 `i a ]
 "120
-[; ;main.c: 120:         adc_result_t co2val;
-[v _co2val `us ~T0 @X0 1 a ]
+[; ;main.c: 120:         float ftotal;
+[v _ftotal `f ~T0 @X0 1 a ]
 "121
-[; ;main.c: 121:         float fco2v;
-[v _fco2v `f ~T0 @X0 1 a ]
+[; ;main.c: 121:         long total;
+[v _total `l ~T0 @X0 1 a ]
 "122
-[; ;main.c: 122:         uint16_t co2ppm ;
-[v _co2ppm `us ~T0 @X0 1 a ]
+[; ;main.c: 122:         int n;
+[v _n `i ~T0 @X0 1 a ]
+"123
+[; ;main.c: 123:         float fco2v;
+[v _fco2v `f ~T0 @X0 1 a ]
 "124
-[; ;main.c: 124:         ftotal = 0.0f;
-[e = _ftotal -> .0.0 `f ]
-"125
-[; ;main.c: 125:         total = 0;
-[e = _total -> -> 0 `i `l ]
+[; ;main.c: 124:         uint16_t co2ppm ;
+[v _co2ppm `us ~T0 @X0 1 a ]
 "126
-[; ;main.c: 126:         for(int i= 0;i< 1000 ;i++){
+[; ;main.c: 126:         ftotal = 0.0f;
+[e = _ftotal -> .0.0 `f ]
+"127
+[; ;main.c: 127:         total = 0;
+[e = _total -> -> 0 `i `l ]
+"128
+[; ;main.c: 128:         for(int i= 0;i< 1000 ;i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -1472,31 +1502,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 937  ]
 [e :U 936 ]
 {
-"127
-[; ;main.c: 127:             co2val = ADC_GetConversion(0b000010);
-[e = _co2val ( _ADC_GetConversion (1 -> -> 2 `i `E6342 ]
-"128
-[; ;main.c: 128:             total += co2val;
-[e =+ _total -> _co2val `l ]
 "129
-[; ;main.c: 129:         }
+[; ;main.c: 129:             total += ADC_GetConversion(0b000010);
+[e =+ _total -> ( _ADC_GetConversion (1 -> -> 2 `i `E6342 `l ]
+"130
+[; ;main.c: 130:         }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 1000 `i 936  ]
 [e :U 937 ]
 }
-"130
-[; ;main.c: 130:         ftotal = total;
-[e = _ftotal -> _total `f ]
 "131
-[; ;main.c: 131:         ftotal = ftotal * (5.0f/1023);
-[e = _ftotal * _ftotal / -> .5.0 `f -> -> 1023 `i `f ]
+[; ;main.c: 131:         ftotal = (float)total * (5.0f/1023);
+[e = _ftotal * -> _total `f / -> .5.0 `f -> -> 1023 `i `f ]
 "132
 [; ;main.c: 132:         fco2v = ftotal / 1000;
 [e = _fco2v / _ftotal -> -> 1000 `i `f ]
 "133
-[; ;main.c: 133:         n = (2.940f -fco2v)/(1E-3);
-[e = _n -> / -> - -> .2.940 `f _fco2v `d .1e-3 `i ]
+[; ;main.c: 133:         n = (tbltop_v-fco2v)/(1E-3);
+[e = _n -> / -> - _tbltop_v _fco2v `d .1e-3 `i ]
 "135
 [; ;main.c: 135:         if(n<0) n= 0;
 [e $ ! < _n -> 0 `i 939  ]
@@ -1518,19 +1542,91 @@ Version 4.0 HI-TECH Software Intermediate Code
 "139
 [; ;main.c: 139:         putstr(s);
 [e ( _putstr (1 &U _s ]
-"140
-[; ;main.c: 140:         _delay((unsigned long)((1000)*(1000000/4000.0)));
+"142
+[; ;main.c: 142:         if(co2ppm < 700){
+[e $ ! < -> _co2ppm `ui -> -> 700 `i `ui 942  ]
+{
+"143
+[; ;main.c: 143:             do { LATCbits.LATC1 = 1; } while(0); do { LATCbits.LATC0 = 0; } while(0);
+[e :U 945 ]
+{
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+}
+[e :U 944 ]
+[e :U 948 ]
+{
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+}
+[e :U 947 ]
+"144
+[; ;main.c: 144:         }else{
+}
+[e $U 949  ]
+[e :U 942 ]
+{
+"145
+[; ;main.c: 145:             do { LATCbits.LATC1 = 0; } while(0); do { LATCbits.LATC0 = 1; } while(0);
+[e :U 952 ]
+{
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+}
+[e :U 951 ]
+[e :U 955 ]
+{
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+}
+[e :U 954 ]
+"146
+[; ;main.c: 146:         }
+}
+[e :U 949 ]
+"149
+[; ;main.c: 149:         if(PORTCbits.RC2 ==0){
+[e $ ! == -> . . _PORTCbits 0 2 `i -> 0 `i 956  ]
+{
+"150
+[; ;main.c: 150:             btn_cnt++;
+[e ++ _btn_cnt -> -> 1 `i `us ]
+"151
+[; ;main.c: 151:             if(btn_cnt == 3){
+[e $ ! == -> _btn_cnt `ui -> -> 3 `i `ui 957  ]
+{
+"152
+[; ;main.c: 152:                 tbltop_v = fco2v - 0.005;
+[e = _tbltop_v -> - -> _fco2v `d .0.005 `f ]
+"153
+[; ;main.c: 153:                 btn_cnt =3;
+[e = _btn_cnt -> -> 3 `i `us ]
+"154
+[; ;main.c: 154:             }
+}
+[e :U 957 ]
+"155
+[; ;main.c: 155:         }else{
+}
+[e $U 958  ]
+[e :U 956 ]
+{
+"156
+[; ;main.c: 156:             btn_cnt=0;
+[e = _btn_cnt -> -> 0 `i `us ]
+"157
+[; ;main.c: 157:         }
+}
+[e :U 958 ]
+"159
+[; ;main.c: 159:         _delay((unsigned long)((1000)*(1000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
-"141
-[; ;main.c: 141:     }
+"160
+[; ;main.c: 160:     }
 }
 [e :U 933 ]
 [e $U 934  ]
 [e :U 935 ]
-"142
-[; ;main.c: 142: }
+"161
+[; ;main.c: 161: }
 [e :UE 932 ]
 }
 [p f _sprintf 8495232 ]
 [a 2C 37 100 44 37 53 46 51 102 86 13 10 0 ]
-[a 1C 77 71 56 49 50 77 79 78 73 84 79 82 32 86 49 46 48 48 13 10 0 ]
+[a 1C 10 10 13 10 77 71 56 49 50 77 79 78 73 84 79 82 32 86 49 46 48 48 13 10 0 ]

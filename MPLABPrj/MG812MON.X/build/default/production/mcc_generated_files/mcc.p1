@@ -2,8 +2,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "108 mcc_generated_files/mcc.h
 [; ;mcc_generated_files/mcc.h: 108: void PMD_Initialize(void);
 [v _PMD_Initialize `(v ~T0 @X0 0 ef ]
-"282 mcc_generated_files/pin_manager.h
-[; ;mcc_generated_files/pin_manager.h: 282: void PIN_MANAGER_Initialize (void);
+"242 mcc_generated_files/pin_manager.h
+[; ;mcc_generated_files/pin_manager.h: 242: void PIN_MANAGER_Initialize (void);
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
 "84 mcc_generated_files/mcc.h
 [; ;mcc_generated_files/mcc.h: 84: void OSCILLATOR_Initialize(void);

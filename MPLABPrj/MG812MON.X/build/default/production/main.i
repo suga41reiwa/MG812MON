@@ -10595,9 +10595,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 282 "./mcc_generated_files/pin_manager.h"
+# 242 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 294 "./mcc_generated_files/pin_manager.h"
+# 254 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -11283,35 +11283,54 @@ void putstr( char * p )
 
 void main(void)
 {
+    uint16_t btn_cnt=0;
+    float tbltop_v = 2.940f;
     SYSTEM_Initialize();
 
-    putstr("MG812MONITOR V1.00\r\n");
+    _delay((unsigned long)((1000)*(1000000/4000.0)));
+    putstr("\n\n\r\nMG812MONITOR V1.00\r\n");
     while (1)
     {
         char s[20];
         float ftotal;
         long total;
         int n;
-        adc_result_t co2val;
         float fco2v;
         uint16_t co2ppm ;
 
         ftotal = 0.0f;
         total = 0;
         for(int i= 0;i< 1000 ;i++){
-            co2val = ADC_GetConversion(0b000010);
-            total += co2val;
+            total += ADC_GetConversion(0b000010);
         }
-        ftotal = total;
-        ftotal = ftotal * (5.0f/1023);
+        ftotal = (float)total * (5.0f/1023);
         fco2v = ftotal / 1000;
-        n = (2.940f -fco2v)/(1E-3);
+        n = (tbltop_v-fco2v)/(1E-3);
 
         if(n<0) n= 0;
         else if( n>= (sizeof(co2_table)/2))n=sizeof(co2_table)/2-1;
         co2ppm = co2_table[n];
         sprintf(s,"%d,%5.3fV\r\n",co2ppm,fco2v);
         putstr(s);
+
+
+        if(co2ppm < 700){
+            do { LATCbits.LATC1 = 1; } while(0); do { LATCbits.LATC0 = 0; } while(0);
+        }else{
+            do { LATCbits.LATC1 = 0; } while(0); do { LATCbits.LATC0 = 1; } while(0);
+        }
+
+
+        if(PORTCbits.RC2 ==0){
+            btn_cnt++;
+            if(btn_cnt == 3){
+                tbltop_v = fco2v - 0.005;
+                btn_cnt =3;
+            }
+        }else{
+            btn_cnt=0;
+        }
+
         _delay((unsigned long)((1000)*(1000000/4000.0)));
     }
 }

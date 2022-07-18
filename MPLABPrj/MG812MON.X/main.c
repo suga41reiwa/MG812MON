@@ -108,35 +108,54 @@ void putstr( char * p )
 
 void main(void)
 {
+    uint16_t btn_cnt=0;
+    float tbltop_v = TABLE_TOPV;
     SYSTEM_Initialize();
     
-    putstr("MG812MONITOR V1.00\r\n");
+    __delay_ms(1000);
+    putstr("\n\n\r\nMG812MONITOR V1.00\r\n");
     while (1)
     {
         char s[20];
         float ftotal;
         long total;
         int n;
-        adc_result_t co2val;
         float fco2v;
         uint16_t co2ppm ;
 
         ftotal = 0.0f;
         total = 0;
         for(int i= 0;i< AVE_NUM ;i++){
-            co2val =  ADC_GetConversion(ADCCH_ANA2);
-            total += co2val;
+            total +=  ADC_GetConversion(ADCCH_ANA2);
         }     
-        ftotal = total;
-        ftotal = ftotal * (VCC/1023);
+        ftotal = (float)total * (VCC/1023);
         fco2v = ftotal / AVE_NUM;
-        n =  (TABLE_TOPV-fco2v)/(1E-3);
+        n =  (tbltop_v-fco2v)/(1E-3);
 
         if(n<0) n= 0;
         else if( n>= (sizeof(co2_table)/2))n=sizeof(co2_table)/2-1;
         co2ppm = co2_table[n];
         sprintf(s,"%d,%5.3fV\r\n",co2ppm,fco2v);
         putstr(s);
+
+        // LED Drive
+        if(co2ppm < 700){  // GREEN 
+            IO_RC1_SetHigh();            IO_RC0_SetLow();
+        }else{      //RED
+            IO_RC1_SetLow();            IO_RC0_SetHigh();            
+        }    
+        
+        // manual Calibration
+        if(IO_RC2_PORT ==0){
+            btn_cnt++;
+            if(btn_cnt == 3){
+                tbltop_v = fco2v - 0.005;
+                btn_cnt =3;
+            }
+        }else{
+            btn_cnt=0;
+        }
+
         __delay_ms(1000);
     }
 }
