@@ -11284,7 +11284,7 @@ void putstr( char * p )
 void main(void)
 {
     uint16_t btn_cnt=0;
-    float tbltop_v = 2.940f;
+    float tbltop_v = 3.028f;
     SYSTEM_Initialize();
 
     _delay((unsigned long)((1000)*(1000000/4000.0)));

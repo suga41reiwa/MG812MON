@@ -1451,9 +1451,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _btn_cnt `us ~T0 @X0 1 a ]
 [e = _btn_cnt -> -> 0 `i `us ]
 "112
-[; ;main.c: 112:     float tbltop_v = 2.940f;
+[; ;main.c: 112:     float tbltop_v = 3.028f;
 [v _tbltop_v `f ~T0 @X0 1 a ]
-[e = _tbltop_v -> .2.940 `f ]
+[e = _tbltop_v -> .3.028 `f ]
 "113
 [; ;main.c: 113:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]

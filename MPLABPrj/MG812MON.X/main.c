@@ -56,7 +56,7 @@
 
 #define AVE_NUM 1000
 #define VCC 5.0f
-#define TABLE_TOPV 2.940f // 400ppm
+#define TABLE_TOPV 3.028f // 400ppm
 
 const uint16_t co2_table[]={
  400, 404, 408, 411, 415, 419, 423, 427, 431, 435,
